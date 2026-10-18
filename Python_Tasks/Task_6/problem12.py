@@ -1,20 +1,25 @@
-# String Formatting
-# problem link - https://www.hackerrank.com/challenges/python-string-formatting/problem
+# set. discard(),pop(),remove()
+# problem link - https://www.hackerrank.com/challenges/py-set-discard-remove-pop/problem
 
 
-def print_formatted(number):
-    width = len(bin(number)) - 2
+def modify_set(n, s, commands):
+    for i in range(commands):
+        operation = input().split()
 
-    for i in range(1, number + 1):
-        decimal = str(i)
-        octal = oct(i)[2:]
-        hexadecimal = hex(i)[2:].upper()
-        binary = bin(i)[2:]
+        if operation[0] == "pop":
+            s.remove(min(s))
+        elif operation[0] == "remove":
+            s.discard(int(operation[1]))
+        elif operation[0] == "discard":
+            s.discard(int(operation[1]))
 
-        print(decimal.rjust(width), octal.rjust(width),
-              hexadecimal.rjust(width), binary.rjust(width))
+    print(sum(s))
 
 
 if __name__ == '__main__':
     n = int(input())
-    print_formatted(n)
+    s = set(map(int, input().split()))
+    commands = int(input())
+
+    modify_set(n, s, commands)
+
